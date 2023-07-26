@@ -62,6 +62,28 @@ const LinkedList = () => {
     return contains(value, pointer.next);
   };
 
+  const find = (value, pointer = _head, index = 0) => {
+    if (pointer === null) return null;
+    if (pointer.value === value) return index;
+
+    index++;
+    return find(value, pointer.next, index);
+  };
+
+  const toString = () => {
+    let string = "";
+    let pointer = _head;
+
+    while (pointer) {
+      if (pointer) string += `( ${pointer.value} ) -> `;
+      else string += "null";
+
+      pointer = pointer.next;
+    }
+
+    return string;
+  };
+
   return {
     head,
     tail,
@@ -71,6 +93,8 @@ const LinkedList = () => {
     at,
     pop,
     contains,
+    find,
+    toString,
   };
 };
 
