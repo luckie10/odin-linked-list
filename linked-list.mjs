@@ -43,6 +43,25 @@ const LinkedList = () => {
     return pointer;
   };
 
+  const pop = () => {
+    let pointer = _head;
+    let pointerMinusOne = null;
+
+    while (pointer.next !== null) {
+      pointerMinusOne = pointer;
+      pointer = pointer.next;
+    }
+
+    pointerMinusOne.next = null;
+  };
+
+  const contains = (value, pointer = _head) => {
+    if (pointer === null) return false;
+    if (pointer.value === value) return true;
+
+    return contains(value, pointer.next);
+  };
+
   return {
     head,
     tail,
@@ -50,6 +69,8 @@ const LinkedList = () => {
     append,
     size,
     at,
+    pop,
+    contains,
   };
 };
 
