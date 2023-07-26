@@ -76,12 +76,26 @@ const LinkedList = () => {
 
     while (pointer) {
       if (pointer) string += `( ${pointer.value} ) -> `;
-      else string += "null";
-
       pointer = pointer.next;
     }
 
+    string += "null";
+
     return string;
+  };
+
+  const insertAt = (value, index) => {
+    let prev = at(index - 1);
+    let next = at(index);
+
+    prev.next = linkedListNode(value, next);
+  };
+
+  const removeAt = (index) => {
+    let prev = at(index - 1);
+    let next = at(index + 1);
+
+    prev.next = next;
   };
 
   return {
@@ -95,6 +109,8 @@ const LinkedList = () => {
     contains,
     find,
     toString,
+    insertAt,
+    removeAt,
   };
 };
 
