@@ -15,10 +15,26 @@ const LinkedList = () => {
     return pointer;
   };
 
+  const prepend = (value) => {
+    _head = linkedListNode(value, _head);
+    length++;
+  };
+
+  const append = (value) => {
+    if (_head === null) prepend(value);
+    else {
+      let _tail = tail();
+
+      _tail.next = linkedListNode(value);
+      length++;
+    }
+  };
 
   return {
     head,
     tail,
+    prepend,
+    append,
   };
 };
 
